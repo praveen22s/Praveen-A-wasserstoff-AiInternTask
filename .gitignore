@@ -1,1 +1,13 @@
--e "venv/\n__pycache__/\n*.pyc\n.env" 
+__pycache__/
+*.pyc
+.env
+*.db
+*.sqlite3
+.vscode/
+*.log
+*.pid
+*.egg-info/
+dist/
+build/
+*.DS_Store
+docker-compose.override.yml

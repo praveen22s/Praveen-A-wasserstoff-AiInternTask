@@ -1,0 +1,242 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --error-color: #e74c3c;
+  --dark-color: #2c3e50;
+  --light-color: #ecf0f1;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  color: var(--primary-color);
+  margin-top: 0;
+}
+
+/* Game Header */
+.game-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.stat-box {
+  background-color: white;
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  flex: 1;
+  margin: 0 5px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.stat-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.stat-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--dark-color);
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.score .stat-value {
+  color: var(--secondary-color);
+}
+
+/* Guess Input */
+.guess-input-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  border: 1px solid #ddd;
+  width: 70%;
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
+button {
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: var(--transition);
+  margin-left: 10px;
+}
+
+button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.restart-button {
+  background-color: var(--secondary-color);
+}
+
+.restart-button:hover {
+  background-color: #27ae60;
+}
+
+.clear-button {
+  background-color: #e67e22;
+}
+
+.clear-button:hover {
+  background-color: #d35400;
+}
+
+/* Verdict Display */
+.verdict-display {
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.success {
+  background-color: rgba(46, 204, 113, 0.2);
+  border-left: 5px solid var(--secondary-color);
+}
+
+.error {
+  background-color: rgba(231, 76, 60, 0.2);
+  border-left: 5px solid var(--error-color);
+}
+
+.emoji-feedback {
+  font-size: 24px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Guess History */
+.guess-history {
+  background-color: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 20px;
+}
+
+.guess-history ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.guess-history li {
+  padding: 8px;
+  margin-bottom: 5px;
+  background-color: rgba(52, 152, 219, 0.1);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.guess-history li:hover {
+  background-color: rgba(52, 152, 219, 0.2);
+}
+
+/* Control Panel */
+.control-panel {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.pulse {
+  animation: pulse 0.5s;
+}
+
+.shake {
+  animation: shake 0.5s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .stats-container {
+    flex-direction: column;
+  }
+  
+  .stat-box {
+    margin: 5px 0;
+  }
+  
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .control-panel {
+    flex-direction: column;
+  }
+  
+  .control-panel button {
+    margin-bottom: 10px;
+  }
+}

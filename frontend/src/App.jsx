@@ -16,12 +16,12 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
   const [globalGuesses, setGlobalGuesses] = useState(0);
-
+  const API_BASE_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
   // Clear cache when page loads
   useEffect(() => {
     const clearCacheOnLoad = async () => {
       try {
-        await fetch("http://127.0.0.1:8000/game/clear-cache");
+        await fetch(`${API_BASE_URL}/game/clear-cache`);
         console.log("Cache cleared on load");
       } catch (error) {
         console.error("Failed to clear cache on load:", error);
@@ -45,7 +45,7 @@ function App() {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/game/guess", {
+      const response = await fetch(`${API_BASE_URL}/game/guess`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ guess, persona: "cheery" }),

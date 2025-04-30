@@ -82,7 +82,7 @@ function App() {
 
   const handleClearCache = async () => {
     try {
-      await fetch("http://127.0.0.1:8000/game/clear-cache");
+      await fetch(`${API_BASE_URL}/game/clear-cache`);
       setMessage("Cache cleared!");
       setExplanation("");
     } catch (error) {

@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+# What Beats It? 🎮
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A creative word association game powered by AI, where players try to guess words that "beat" a given seed word.
 
-## Available Scripts
 
-In the project directory, you can run:
+## 🌟 Overview
 
-### `npm start`
+"What Beats It?" is an engaging word game where players are presented with a seed word and must come up with words that conceptually "beat" it. The AI determines if your guess is valid based on creative associations and relationships between words.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **AI-Powered Validation**: Uses Google's Gemini API to validate word relationships and create creative game content
+- **Real-time Feedback**: Instant validation of guesses with AI-generated explanations
+- **Game History**: Track your previous guesses and see why they did or didn't beat the seed word
+- **Rate Limiting**: Protects the API from excessive requests using SlowAPI
+- **Responsive Design**: Play seamlessly on desktop or mobile devices
 
-### `npm test`
+## 🛠️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Frontend
+- **React**: Modern, component-based UI framework
+- **CSS**: Custom styling for an engaging game experience
 
-### `npm run build`
+### Backend
+- **FastAPI**: High-performance Python web framework
+- **Google Gemini API**: AI model for creative word association validation
+- **SQLAlchemy**: ORM for database interactions
+- **Alembic**: Database migration tool
+- **SlowAPI**: For API rate limiting
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Database
+- **PostgreSQL**: Robust relational database for game data storage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Caching
+- **Redis**: In-memory data store for improved performance
 
 ### Deployment
+- **Render**: Cloud platform hosting all application components
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📋 Project Structure
 
-### `npm run build` fails to minify
+```
+genai-intern-game/
+├── backend/               # FastAPI application
+│   ├── api/               # API routes and endpoints
+│   ├── core/              # Core game logic and AI integration
+│   └── db/                # Database models and configuration
+├── frontend/              # React application
+│   ├── public/            # Static assets
+│   └── src/               # React components and logic
+│       └── components/    # UI components for the game
+└── tests/                 # Testing suite
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v14+)
+- Python (v3.8+)
+- PostgreSQL
+- Redis
+
+### Environment Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/praveen22s/Praveen-A-wasserstoff-AiInternTask.git
+cd genai-intern-game
+```
+
+2. Set up the backend:
+```bash
+cd backend
+pip install -r requirements.txt
+# Create .env file with required environment variables
+```
+
+3. Set up the frontend:
+```bash
+cd frontend
+npm install
+```
+
+### Running Locally
+
+1. Start the backend:
+```bash
+cd backend
+uvicorn main:app --reload
+```
+
+2. Start the frontend:
+```bash
+cd frontend
+npm start
+```
+
+3. Visit `http://localhost:3000` in your browser
+
+## 🐳 Docker Deployment
+
+The application can be deployed using Docker Compose:
+
+```bash
+docker-compose up -d
+```
+
+## 🧪 Testing
+
+Run the test suite to ensure everything is working correctly:
+
+```bash
+pytest
+```
+
+## 📝 Game Rules
+
+1. You'll be presented with a "seed word"
+2. Enter a word that you think conceptually "beats" the seed word
+3. The AI will determine if your guess is valid and explain why
+4. Try to find as many valid words as possible!
+
+## 👥 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgements
+
+- Google Gemini API for powering the creative AI components
+- Render for hosting services
+- All contributors and testers who helped shape this game

@@ -2,6 +2,7 @@
 
 A creative word association game powered by AI, where players try to guess words that "beat" a given seed word.
 
+![Game Banner](https://via.placeholder.com/800x200?text=What+Beats+It%3F)
 
 ## 🌟 Overview
 
@@ -39,6 +40,9 @@ A creative word association game powered by AI, where players try to guess words
 
 ## 📋 Project Structure
 
+Below is the project structure showing key components:
+
+
 ```
 genai-intern-game/
 ├── backend/               # FastAPI application
@@ -52,9 +56,25 @@ genai-intern-game/
 └── tests/                 # Testing suite
 ```
 
+## 💻 Development Environment
+
+This project was developed using Windows Subsystem for Linux (WSL) with Ubuntu. WSL is recommended for Windows users to ensure compatibility with all tools and services used in this project.
+
+### Setting up WSL (for Windows users)
+
+1. Install WSL by running the following in PowerShell as Administrator:
+```powershell
+wsl --install
+```
+
+2. After installation and restart, WSL will use Ubuntu by default. Open Ubuntu from the Start menu to set up your Linux username and password.
+
+3. All commands in this README should be run in the WSL terminal for Windows users.
+
 ## 🚀 Getting Started
 
 ### Prerequisites
+- WSL (Windows Subsystem for Linux) with Ubuntu (for Windows users)
 - Node.js (v14+)
 - Python (v3.8+)
 - PostgreSQL
@@ -72,7 +92,7 @@ cd genai-intern-game
 ```bash
 cd backend
 pip install -r requirements.txt
-# Create .env file with required environment variables
+# Create .env file with required environment variables (see .env.example below)
 ```
 
 3. Set up the frontend:
@@ -81,21 +101,49 @@ cd frontend
 npm install
 ```
 
+4. Set up Redis:
+```bash
+# Install Redis on WSL (Ubuntu/Debian)
+sudo apt-get update
+sudo apt-get install redis-server
+
+# Install Redis (macOS with Homebrew)
+brew install redis
+
+# For native Windows (not recommended)
+# Download the Windows port from https://github.com/tporadowski/redis/releases
+```
+
 ### Running Locally
 
-1. Start the backend:
+1. Start Redis server:
+```bash
+# In WSL (Ubuntu/Debian)
+sudo service redis-server start
+# or
+redis-server
+
+# macOS
+redis-server
+
+# Windows (not recommended for development)
+# Navigate to Redis installation directory and run
+redis-server.exe
+```
+
+2. Start the backend:
 ```bash
 cd backend
 uvicorn main:app --reload
 ```
 
-2. Start the frontend:
+3. Start the frontend:
 ```bash
 cd frontend
 npm start
 ```
 
-3. Visit `http://localhost:3000` in your browser
+4. Visit `http://localhost:3000` in your browser
 
 ## 🐳 Docker Deployment
 
@@ -105,12 +153,36 @@ The application can be deployed using Docker Compose:
 docker-compose up -d
 ```
 
+This will start all services including PostgreSQL and Redis, so no separate Redis installation is needed when using Docker.
+
 ## 🧪 Testing
 
 Run the test suite to ensure everything is working correctly:
 
 ```bash
+# Make sure Redis is running before testing
 pytest
+```
+
+The test suite includes end-to-end tests that verify the game's functionality.
+
+## 📝 Sample .env File
+
+Create a `.env` file in the root directory with the following variables:
+
+```
+# Database (for WSL, ensure PostgreSQL is running in WSL too)
+DATABASE_URL=postgresql://username:password@localhost:5432/what_beats_it
+
+# Redis
+REDIS_URL=redis://localhost:6379/0
+
+# Gemini API
+GEMINI_API_KEY=your_gemini_api_key
+
+# App Settings
+DEBUG=True
+RATE_LIMIT_PER_MINUTE=10
 ```
 
 ## 📝 Game Rules
